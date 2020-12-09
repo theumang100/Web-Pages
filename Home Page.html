@@ -1,0 +1,653 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Home Page</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js\jquery-3.4.1.min.js"></script>
+    <script src="js\bootstrap.min.js"></script>
+    <script src="js\popper.min.js"></script>
+
+    <script>
+        function openleftmenubar() {
+            document.getElementById("leftsidenav").style.width = "250px";
+        }
+        //function closeleftmenubar() {
+        //    document.getElementById("leftsidenav").style.width = "0";
+        //}
+
+        document.addEventListener('mousedown', function (event) {
+            var side_dom = document.getElementById("leftsidenav");
+            if (side_dom.style.width == '250px') {
+                if (!side_dom.contains(event.target)) {
+                    document.getElementById("leftsidenav").style.width = "0";
+                }
+            }
+        })
+    </script>
+
+    <style>
+
+        body {
+            font-family: Roboto, Arial, sans-serif;
+            overflow-x:hidden;
+            
+        }
+
+        a {
+            color: black;
+        }
+
+        img {
+            border: solid 2px white;
+        }
+
+        input {
+            overflow: visible;
+            border: #0000000f 1px;
+            border-radius: 3px;
+            border-style: solid;
+        }
+
+
+        .container-fluid {
+            width: 100%;
+            padding-right: 0;
+            padding-left: 0;
+            margin-right: 0;
+            margin-left: 0;
+        }
+
+
+
+        div.headfield {
+            background-color: white;
+            border-bottom: solid 1px black;
+        }
+
+        #mobileviewheadfield {
+           
+            width: 80%;
+            margin-left: 10%;
+            border: solid 1px #eef3ff42;
+            border-radius: 4px;
+            margin-top: 2%;
+            
+        }
+
+        div.mobileviewheadlogo {
+            width: 45%;
+          
+        }
+
+        div.mobileviewheadsearchbar {
+            width: 45%;
+        }
+
+            div.mobileviewheadsearchbar input[type=text] {
+                color: black;
+                outline: none;
+            }
+
+        div.card {
+            border: none;
+        }
+
+        div.card-header {
+            border-bottom: none;
+            background-color: #141f3a;
+        }
+
+        .btn-link {
+            color: white;
+        }
+
+            .btn-link:hover {
+                color: #6f7377;
+                text-decoration: none;
+            }
+
+
+
+        div.headlogo {
+            padding-left: 18px;
+            padding-top: 12px;
+            font-size: 21px;
+        }
+
+        div.headsearchbar {
+            padding-left: 16px;
+            padding-top: 5px;
+        }
+
+
+        div.accountlink {
+            padding-left: 16px;
+            padding-top: 5px;
+        }
+
+        div.bodyfield {
+            background-color: white;
+        }
+
+        div.mainvideo {
+            width: 100%;
+        }
+
+        div.mainvideofeatured {
+            padding: 7px;
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+        div.mainvideo img {
+            width: 100%;
+            margin-left: 15px;
+            height: 350px;
+            /*box-shadow: 0px 6px 20px 0px #6c7277;*/
+        }
+
+        div.sidevideos {
+            margin-top: 44px;
+            width: 100%;
+        }
+
+        div.sideseparatethumbnail {
+            margin-left: 30px;
+            float: left;
+        }
+
+        div.sideseparatevideo {
+            width: 30%;
+            height: auto;
+        }
+
+        div.sideseparatevideodescription {
+            width: 70%;
+            float: left;
+            padding-top: 10px;
+            padding-left: 10px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        div.sideseparatevideo img {
+            width: 100px;
+            height: 120px;
+            float: left;
+            padding-top: 10px;
+        }
+
+        div.squarepopupthumbnail {
+            padding-top: 54px;
+            padding-right: 7px;
+        }
+
+        div.squarepopup img {
+            width: 100%;
+            height: 264px;
+            padding-left: 7px;
+            padding-right: 7px;
+        }
+
+        div.squarepopupdescription {
+            font-size: 13px;
+            padding-left: 7px;
+            font-weight: 600;
+        }
+
+        div.bottommorevideohead {
+            padding-top: 15px;
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+        div.bottomthumbnail {
+            margin-top: 7px;
+            padding-left: 7px;
+        }
+
+        div.bottomsuggestedvideos img {
+            width: 150px;
+            height: 150px;
+            padding: 3px;
+            max-width:55%;
+            max-height:50%;
+            float:left;
+        }
+
+        div.bottomseparatethumbnail {
+            width: 25%;
+            height: 150px;
+            float: left;
+        }
+
+        .bottomseparatevideodescription{
+            font-size:12px;
+            font-weight:600;
+        }
+
+
+        div.leftsidenavclass {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #141f3a;
+            overflow-x: hidden;
+            transition: 0.5s;
+            font-size: 20px;
+        }
+
+            div.leftsidenavclass a {
+                padding: 8px 8px 8px 32px;
+                text-decoration: none;
+                font-size: 15px;
+                color: #6f7377;
+                display: block;
+                transition: 0.3s;
+            }
+
+                div.leftsidenavclass a:hover {
+                    color: #f1f1f1;
+                }
+
+        div.closebtn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 20px;
+        }
+
+
+        @media only screen and (max-width:1106px) {
+            div.headfield {
+                border-bottom: none;
+            }
+
+            div.mobileviewheadsearchbar {
+                margin-left: 17%;
+                padding: 7px;
+            }
+
+            div.mainvideo img {
+                height: 350px;
+            }
+
+            div.searchnavbar, div.accountlink, div.accountnavbar, div.headlogo, div.headsearchbar {
+                display: none;
+            }
+
+            div.sideseparatevideodescription {
+                width: 55%;
+            }
+
+            .bottomseparatevideodescription {
+                font-size: 8px;
+                font-weight: 600;
+            }
+        }
+
+
+
+
+
+        @media only screen and (max-width :767px) {
+            div.headfield {
+                border-bottom: none;
+            }
+
+            div.mainvideo {
+                width: 100%;
+            }
+
+                div.mainvideo img {
+                    width: 100%;
+                    height: auto;
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+
+            div.searchnavbar, div.accountlink, div.accountnavbar, div.headlogo, div.headsearchbar {
+                display: none;
+            }
+
+            div.mobileviewheadlogo {
+                padding: 7px;
+                margin-left: 6%;
+            }
+
+            div.mobileviewheadsearchbar {
+                width: 80%;
+                margin-left: 10%;
+                padding: 7px;
+            }
+
+                div.mobileviewheadsearchbar input {
+                    width: 100%;
+                    margin-left: 4px;
+                }
+
+            div.sidevideos {
+                width: 100%;
+            }
+
+            div.sideseparatethumbnail {
+                margin-left: 10px;
+                float: left;
+            }
+
+            div.sideseparatevideo {
+                width: 30%;
+            }
+
+            div.sideseparatevideodescription {
+                width: 70%;
+                float: left;
+                padding-top: 10px;
+                padding-left: 10px;
+                font-size: 12px;
+                font-weight: 600;
+                
+            }
+
+            div.sideseparatevideo img {
+                width: 95px;
+                height: 120px;
+                float: left;
+                padding-top: 10px;
+            }
+
+            div.bottomseparatethumbnail {
+                display: block;
+                width: 100%;
+                height: 150px;
+                float: left;
+            }
+        }
+
+        @media only screen and (min-width:1106px) {
+            #mobileviewheadfield {
+                display: none;
+            }
+
+            div.leftsidenavclass {
+                display: none;
+            }
+
+            div.leftmenubaricon {
+                display: none;
+            }
+
+            div.mobileviewheadsearchbar, div.mobileviewheadlogo {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+
+
+        <div class="row no-gutters" id="mobileviewheadfield">
+            <div class="col-1">
+                <div class="leftmenubaricon">
+                    <span style="font-size:25px;cursor:pointer;width:10%;padding:7px" onclick="openleftmenubar()">&#9776;</span>
+                </div>
+            </div>
+            <div id="leftsidenav" class="leftsidenavclass">
+                <!--<a href="javascript:void(0)" class="closebtn" onclick="closeleftmenubar()">&times;</a>-->
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Account
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                <a href="#">Create Account</a>
+                                <a href="#">Sign-in</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Library
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                <a href="#">Subscription</a>
+                                <a href="#">History</a>
+                                <a href="#">Upload</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Explore
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                            <div class="card-body">
+                                <a href="#">Home</a>
+                                <a href="#">Videos</a>
+                                <a href="#">Channel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="mobileviewheadlogo">
+                    YouTube
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="mobileviewheadsearchbar">
+                    <input type="text" placeholder="Search..." />
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="headfield">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+                    <div class="headlogo">
+                        YouTube
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="headsearchbar">
+                        <input type="text" placeholder="Search..." />
+                    </div>
+                    <div class="searchnavbar">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Videos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Channel</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="accountlink">
+                        <a href="#">Create Account</a>
+                        <span>or</span>
+                        <a href="#">Sign-in</a>
+                    </div>
+                    <div class="accountnavbar">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Subscriptions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">History</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Upload</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bodyfield">
+            <div class="row no-gutters">
+
+                <div class="col-md-5">
+                    <div class="mainvideo">
+                        <div class="mainvideofeatured">
+                            <p>Featured</p>
+                        </div>
+                        <img src="Images/avengers_endgame_official_poster_4k.png" />
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="sidevideos">
+                        <div class="sideseparatethumbnail">
+                            <div class="sideseparatevideo">
+                                <img src="Images/baby-groot-4k-hd-superheroes-wallpaper-thumb.jpg" />
+                            </div>
+                            <div class="sideseparatevideodescription">
+                                <p>Avenger: End Game(2019) hd trailer.Avenger: End Game(2019) hd trailer</p>
+                            </div>
+                        </div>
+
+                        <div class="sideseparatethumbnail">
+                            <div class="sideseparatevideo">
+                                <img src="Images/photo-1497250681960-ef046c08a56e.png" />
+                            </div>
+                            <div class="sideseparatevideodescription">
+                                <p>Beautiful nature with green leaves awesome creation pc- by amit</p>
+                            </div>
+                        </div>
+
+                        <div class="sideseparatethumbnail">
+                            <div class="sideseparatevideo">
+                                <img src="Images/photo-1497250681960-ef046c08a56e.png" />
+                            </div>
+                            <div class="sideseparatevideodescription">
+                                <p>4k video by forest in amazon history cute leaves John Parker|Ryan David</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <div class="squarepopupthumbnail">
+                        <div class="squarepopup">
+                            <img src="Images/images.png" />
+                        </div>
+                        <div class="squarepopupdescription">
+                            <p>Diamond structure with explanation energy consumption rare video how it was made Diamond structure with explanation energy consumption rare video how it was made</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-md-12">
+                    <div class="bottomthumbnail">
+                        <div class="bottommorevideohead">
+                            <p>More Videos</p>
+                        </div>
+
+                        <div class="bottomsuggestedvideos">
+                            <div class="bottomseparatethumbnail">
+                                <p>
+                                    <img src="Images/3D-HD-Nature-Images-Free-Download.jpg"  />
+                                    <span class="bottomseparatevideodescription"> Flower beauty with green leaves color yellow haed|bottom</span>
+                                </p>
+                            </div>
+
+                            <div class="bottomseparatethumbnail">
+                                <p>
+                                    <img src="Images/images.png" />
+                                    <span class="bottomseparatevideodescription">  Diamond structure with explanation energy consumption rare video how it was made</span>
+                                </p>
+
+                            </div>
+
+                            <div class="bottomseparatethumbnail">
+                                <p>
+                                    <img src="Images/images.png" />
+                                    <span class="bottomseparatevideodescription">  Diamond structure with explanation energy consumption rare video how it was made</span>
+                                </p>
+
+                            </div>
+
+                            <div class="bottomseparatethumbnail">
+                                <p>
+                                    <img src="Images/images.png" />
+                                    <span class="bottomseparatevideodescription">  Diamond structure with explanation energy consumption rare video how it was made</span>
+                                </p>
+
+                            </div>
+
+                            <div class="bottomseparatethumbnail">
+                                <p>
+                                    <img src="Images/images.png" />
+                                    <span class="bottomseparatevideodescription">  Diamond structure with explanation energy consumption rare video how it was made</span>
+                                </p>
+
+                            </div>
+
+                            <div class="bottomseparatethumbnail">
+                                <p>
+                                    <img src="Images/images.png" />
+                                    <span class="bottomseparatevideodescription">  Diamond structure with explanation energy consumption rare video how it was made</span>
+                                </p>
+
+                            </div>
+
+                            <div class="bottomseparatethumbnail">
+                                <p>
+                                    <img src="Images/images.png" />
+                                    <span class="bottomseparatevideodescription">  Diamond structure with explanation energy consumption rare video how it was made</span>
+                                </p>
+
+                            </div>
+
+                            <div class="bottomseparatethumbnail">
+                                <p>
+                                    <img src="Images/images.png" />
+                                    <span class="bottomseparatevideodescription">  Diamond structure with explanation energy consumption rare video how it was made</span>
+                                </p>
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

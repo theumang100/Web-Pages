@@ -1,0 +1,40 @@
+﻿div.header, div.navigationbar, div.article, div.footer, div.fakeimg {
+    border: solid 1px;
+    margin-top: 1px;
+}
+
+div.headlogo {
+    padding: 5px;
+}
+
+p.headtext {
+    text-align: right;
+    padding: 5px;
+}
+div.article{
+    padding:5px;
+}
+
+div.footer {
+    text-align: right;
+    width: 100%;
+    background-color: #535050;
+}
+
+.fakeimg {
+    height: 33%;
+    text-align:center;
+}
+
+@media only screen and (min-width:992px) {
+    div.footer {
+        text-align: right;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #535050;
+        border: solid 1px;
+        margin-top: 1px;
+    }
+}

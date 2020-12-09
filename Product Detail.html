@@ -1,0 +1,642 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js\jquery-3.4.1.min.js"></script>
+    <script src="js\bootstrap.min.js"></script>
+    <script src="js\popper.min.js"></script>
+    <script>
+        function openleftmenubar() {
+            document.getElementById("leftnav").style.width = "260px";
+        }
+        document.addEventListener('mousedown', function (event) {
+            var side_dom = document.getElementById("leftnav");
+            if (side_dom.style.width == '260px') {
+                if (!side_dom.contains(event.target)) {
+                    document.getElementById("leftnav").style.width = "0";
+                }
+            }
+        })
+
+        function openmobileviewleftmenubar() {
+            document.getElementById("mobileviewleftsidenav").style.width = "260px";
+        }
+        document.addEventListener('mousedown', function (event) {
+            var side_dom = document.getElementById("mobileviewleftsidenav");
+            if (side_dom.style.width == '260px') {
+                if (!side_dom.contains(event.target)) {
+                    document.getElementById("mobileviewleftsidenav").style.width = "0";
+                }
+            }
+        })
+    </script>
+    <style>
+        body {
+            font-family: Roboto, Arial, sans-serif;
+        }
+
+        #mobileviewheadfield {
+            width: 100%;
+            /*height: 50px;*/
+            background-color: #141f3a;
+            color: white;
+            box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+        }
+
+        div.mobileviewheadsearchbar {
+            width: 100%;
+            text-align: right;
+            padding: 4px;
+            /*margin-right: 15px;
+            padding-right: 40px;*/
+        }
+
+            div.mobileviewheadsearchbar input {
+                width: 224px;
+                border: solid 1px black;
+                border-radius: 5px;
+            }
+
+        #mobileviewsearchbtn {
+            width: 80px;
+            border: solid 1px #716e8759;
+            border-radius: 10px;
+            background-color: #141f3a;
+            color: white;
+            padding: 2px;
+            outline: none;
+        }
+
+            #mobileviewsearchbtn:hover {
+                color: #6f7377;
+            }
+
+
+
+        div.headimage img {
+            width: 300px;
+            height: 88px;
+            padding: 4px;
+        }
+
+        div.pagelink {
+            width: 100%;
+            padding: 4px;
+            text-align: right;
+            padding-right: 120px;
+        }
+
+            div.pagelink a {
+                color: #141f3a;
+            }
+
+        div.headsearchbar {
+            width: 100%;
+            text-align: right;
+            padding: 4px;
+            margin-right: 15px;
+            padding-right: 40px;
+        }
+
+            div.headsearchbar input {
+                width: 224px;
+                border: solid 1px black;
+                border-radius: 5px;
+            }
+
+        #searchbtn {
+            width: 80px;
+            border: solid 1px #716e8759;
+            border-radius: 10px;
+            background-color: #141f3a;
+            color: white;
+            padding: 2px;
+            outline: none;
+        }
+
+            #searchbtn:hover {
+                color: #6f7377;
+            }
+
+        div.topinformationbar {
+            width: 100%;
+            height: 50px;
+            background-color: #141f3a;
+            color: white;
+            box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+        }
+
+
+
+        div.topnavbar {
+            width: 70%;
+            padding: 4px;
+            float: left;
+            padding-left: 0%;
+        }
+
+        .topnavbar .nav-link {
+            color: white;
+        }
+
+            .topnavbar .nav-link:hover {
+                border: solid 1px white;
+            }
+
+        /*.topnavbar .nav-item:hover {
+            border: solid 1px white;
+        }*/
+
+        div.headcontactnumber {
+            width: 20%;
+            float: left;
+            padding: 4px;
+            padding-top: 8px;
+            padding-right: 40px;
+            text-align: right;
+        }
+
+        div.leftmenubaricon {
+            width: 10%;
+            float: left;
+            padding: 4px;
+        }
+
+        div.leftsidenavbar {
+            width: 0;
+            height: 275px;
+            left: 0;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            display: block;
+            margin-top: 0px;
+            transition: 0.2s;
+            z-index: 1;
+        }
+
+        .leftsidenavbar .nav-item {
+            width: 100%;
+            /*border: solid 1px black;*/
+            background-color: white;
+        }
+
+            .leftsidenavbar .nav-item:hover {
+                background-color: #141f3a;
+            }
+
+        .leftsidenavbar a {
+            padding: 0.2rem 1rem;
+            color: black;
+        }
+
+            .leftsidenavbar a:hover {
+                color: white;
+            }
+
+        #maincontent {
+            padding-right: 40px;
+        }
+
+        div.maincontent {
+            display: block;
+            width: 100%;
+            height: 275px;
+            padding:2px;
+            /*padding-top:3px;*/
+            line-height: 275px;
+            text-align: center;
+            /*border: solid 1px black;*/
+        }
+
+            div.maincontent img {
+                vertical-align: middle;
+                width: 700px;
+                height: 275px;
+                max-width: 100%;
+                /*max-height: 275px;*/
+                object-fit: contain;
+            }
+        /*#featuredproductgroup {
+            padding:3px;
+        }*/
+        div.featuredproducttitle {
+            width: 100%;
+            padding: 3px;
+            padding-top: 13px;
+        }
+
+        div.separatefeaturedproduct {
+            width: 50%;
+            float: left;
+            /*padding:5px;*/
+            /*border:solid 1px black;*/
+        }
+
+        div.separatefeaturedproductimage img {
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+
+        div.separatefeaturedproducttitle {
+            font-weight: 600;
+        }
+
+        div.separatefeaturedproductmoreinfo {
+            margin-left: 101px;
+        }
+
+            div.separatefeaturedproductmoreinfo:hover {
+                background-color: white;
+            }
+
+            div.separatefeaturedproductmoreinfo a {
+                color: #141f3a;
+                width: 90px;
+                display: block;
+                padding: 5px;
+            }
+
+                div.separatefeaturedproductmoreinfo a:hover {
+                    text-decoration: underline;
+                    color: #6f7377;
+                }
+        #bottomblock{
+            padding-right:40px;
+        }
+
+        div.bottomblock {
+            margin-top: 11px;
+            margin-right: 40px;
+            margin-left: 5px;
+            /*border:solid 1px black;*/
+            width: 100%;
+            height: 273px;
+            line-height: 273px;
+            text-align: center;
+        }
+
+            div.bottomblock img {
+                vertical-align: middle;
+                width: 100%;
+                height: 273px;
+                max-height: 273px;
+                object-fit: contain;
+            }
+
+        div.footer {
+            text-align: right;
+            width: 100%;
+            height: 35px;
+            background-color: #141f3a;
+            color: white;
+            margin-top: 5px;
+        }
+
+        div.mobileviewleftsidenavclass {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #141f3a;
+            overflow-x: hidden;
+            transition: 0.5s;
+            font-size: 20px;
+        }
+
+            div.mobileviewleftsidenavclass a {
+                padding: 8px 8px 8px 32px;
+                text-decoration: none;
+                font-size: 15px;
+                color: #6f7377;
+                display: block;
+                transition: 0.3s;
+            }
+
+                div.mobileviewleftsidenavclass a:hover {
+                    color: #f1f1f1;
+                }
+
+        div.card {
+            border: none;
+        }
+
+        div.card-header {
+            border-bottom: none;
+            background-color: #141f3a;
+        }
+
+        .btn-link {
+            color: white;
+        }
+
+            .btn-link:hover {
+                color: #6f7377;
+                text-decoration: none;
+            }
+
+        @media only screen and (max-width :853px) {
+            div.headimage img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                /*padding:4px;*/
+            }
+
+            div.pagelink {
+                padding-right: 5px;
+            }
+
+            div.headsearchbar {
+                display: none;
+            }
+
+            div.topinformationbar {
+                display: none;
+            }
+
+            div.leftsidenavbar {
+                display: none;
+            }
+
+            #maincontent {
+                padding-right: 0;
+            }
+
+            div.separatefeaturedproduct {
+                width: 100%;
+            }
+            #bottomblock{
+                padding-right:0;
+            }
+            div.bottomblock{
+                margin-left:0;
+                margin-right:0;
+                /*border:solid 1px black;*/
+            }
+        }
+
+        @media only screen and (min-width:853px) {
+            #mobileviewheadfield {
+                display: none;
+            }
+
+            div.mobileviewleftsidenavclass {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="row no-gutters">
+        <div class="col-md-3">
+            <div class="headimage">
+                <img src="Images/water-lily-3784022__340.png" />
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="pagelink">
+                <a href="#">View Cart</a>
+                <a href="#">Order History</a>
+            </div>
+            <div class="headsearchbar">
+                <input type="text" placeholder="Product,Parts,Keyword Search" />
+                <input type="button" value="Search" id="searchbtn" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row no-gutters" id="mobileviewheadfield">
+
+        <div class="col-1">
+            <div class="mobileviewheadfieldleftmenubaricon">
+                <span style="font-size:25px;cursor:pointer;width:10%;padding-left:3px;" onclick="openmobileviewleftmenubar()">&#9776;</span>
+            </div>
+        </div>
+        <div class="col-11">
+            <div class="mobileviewheadsearchbar">
+                <input type="text" placeholder="Product,Parts,Keyword Search" />
+                <input type="button" value="Search" id="mobileviewsearchbtn" />
+            </div>
+        </div>
+
+    </div>
+
+    <div id="mobileviewleftsidenav" class="mobileviewleftsidenavclass">
+        <!--<a href="javascript:void(0)" class="closebtn" onclick="closeleftmenubar()">&times;</a>-->
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Activities
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <a href="#">Home</a>
+                        <a href="#">AboutUs</a>
+                        <a href="#">Products</a>
+                        <a href="#">Blogs</a>
+                        <a href="#">News</a>
+                        <a href="#">Support</a>
+                        <a href="#">Contact</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Products
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        <a href="#">Rainfall Sensors</a>
+
+                        <a href="#">Wind Anemometer</a>
+
+                        <a href="#">Wealth Stations</a>
+
+                        <a href="#">Controllers</a>
+
+                        <a href="#">Indicators/Displays</a>
+
+                        <a href="#">Temp/Humidity Sensors</a>
+
+                        <a href="#">Barometric Pressure</a>
+
+                        <a href="#">Solar Radiation</a>
+
+                        <a href="#">Replacement Parts</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row no-gutters">
+        <div class="col-md-12">
+            <div class="topinformationbar">
+                <div class="leftmenubaricon">
+                    <span style="font-size:25px;cursor:pointer;width:10%;padding:7px" onclick="openleftmenubar()">&#9776;</span>
+                </div>
+                <div class="topnavbar">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">AboutUs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Blogs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Support</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="headcontactnumber">800-888-8888</div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row no-gutters">
+        <div class="col-md-3">
+            <div class="leftsidenavbar" id="leftnav">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Rainfall Sensors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Wind Anemometer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Wealth Stations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Controllers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Indicators/Displays</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Temp/Humidity Sensors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Barometric Pressure</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Solar Radiation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Replacement Parts</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9" id="maincontent">
+            <div class="maincontent">
+                <img src="Images/motherboard_chipset_chip_124932_1920x1080.png" />
+            </div>
+        </div>
+    </div>
+    <div class="row no-gutters">
+        <div class="col-md-9" id="featuredproductgroup">
+
+            <div class="featuredproducttitle">
+                <p>Featured Products </p>
+            </div>
+            <div class="separatefeaturedproduct">
+                <div class="separatefeaturedproductimage">
+                    <img src="Images/200-ml-milk-bottle-500x500.png" />
+                </div>
+                <div class="separatefeaturedproductdescription">
+                    <div class="separatefeaturedproducttitle">Product Title</div>
+                    <div class="separatefeaturedproductsku">SKU</div>
+                    <div class="separatefeaturedproductinformation">Lorem ipsum dolor sit amet,consectetur adipiscing elit.</div>
+                    <div class="separatefeaturedproductmoreinfo">
+                        <a href="#" class="separatefeaturedproductmoreinfolink">More Info</a>
+                    </div>
+                </div>
+            </div>
+            <div class="separatefeaturedproduct">
+                <div class="separatefeaturedproductimage">
+                    <img src="Images/200-ml-milk-bottle-500x500.png" />
+                </div>
+                <div class="separatefeaturedproductdescription">
+                    <div class="separatefeaturedproducttitle">Product Title</div>
+                    <div class="separatefeaturedproductsku">SKU</div>
+                    <div class="separatefeaturedproductinformation">Lorem ipsum dolor sit amet,consectetur adipiscing elit.</div>
+                    <div class="separatefeaturedproductmoreinfo">
+                        <a href="#">More Info</a>
+                    </div>
+                </div>
+            </div>
+            <div class="separatefeaturedproduct">
+                <div class="separatefeaturedproductimage">
+                    <img src="Images/200-ml-milk-bottle-500x500.png" />
+                </div>
+                <div class="separatefeaturedproductdescription">
+                    <div class="separatefeaturedproducttitle">Product Title</div>
+                    <div class="separatefeaturedproductsku">SKU</div>
+                    <div class="separatefeaturedproductinformation">Lorem ipsum dolor sit amet,consectetur adipiscing elit.</div>
+                    <div class="separatefeaturedproductmoreinfo">
+                        <a href="#">More Info</a>
+                    </div>
+                </div>
+            </div>
+            <div class="separatefeaturedproduct">
+                <div class="separatefeaturedproductimage">
+                    <img src="Images/200-ml-milk-bottle-500x500.png" />
+                </div>
+                <div class="separatefeaturedproductdescription">
+                    <div class="separatefeaturedproducttitle">Product Title</div>
+                    <div class="separatefeaturedproductsku">SKU</div>
+                    <div class="separatefeaturedproductinformation">Lorem ipsum dolor sit amet,consectetur adipiscing elit.</div>
+                    <div class="separatefeaturedproductmoreinfo">
+                        <a href="#">More Info</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3" id="bottomblock">
+            <div class="bottomblock">
+                <img src="Images/200-ml-milk-bottle-500x500.png" />
+            </div>
+        </div>
+    </div>
+    <div class="row no-gutters">
+        <div class="col-md-12">
+            <div class="footer"><p>copyright©</p></div>
+        </div>
+    </div>
+
+
+</body>
+</html>
