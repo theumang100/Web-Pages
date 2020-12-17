@@ -1,2 +1,2 @@
 # Web-Pages
-Created responsive web pages using Bootstrap4 framework, HTML, CSS, Javascript.
+Responsive web pages based on Bootstrap4 framework, HTML, CSS, Javascript.
